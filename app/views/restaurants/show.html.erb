@@ -1,0 +1,20 @@
+<h1> <%= @restaurant.name %> </h1>
+
+<h2><%= @restaurant.address %></h2>>
+
+<p><strong>Reviews</strong></p>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %></li>
+    <li><%= review.rating %></li>
+  <% end %>
+</ul>
+<br>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back to Hompage", restaurants_path %>
